@@ -1,5 +1,9 @@
 import {
+  faCircleQuestion,
   faCircleXmark,
+  faEarthAsia,
+  faEllipsisVertical,
+  faKeyboard,
   faMagnifyingGlass,
   faSignIn,
   faSpinner,
@@ -12,9 +16,26 @@ import images from '~/asset/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import { Wrapper as PoperWrapper } from '~/components/Poper';
+import Menu from '~/components/Poper/Menu';
 import styles from './Header.module.scss';
 
 const cx = className.bind(styles);
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faEarthAsia} />,
+    title: 'English',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: 'Feedback and help',
+    to: '/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: 'Keyboard shortcuts',
+  },
+];
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
@@ -59,6 +80,12 @@ function Header() {
         <div className={cx('actions')}>
           <Button text>Upload</Button>
           <Button primary={<FontAwesomeIcon icon={faSignIn} />}>Log in</Button>
+
+          <Menu items={MENU_ITEMS}>
+            <button className={cx('more-btn')}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
