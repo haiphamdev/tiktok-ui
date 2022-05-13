@@ -1,7 +1,6 @@
 import {
   faCircleQuestion,
   faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
@@ -18,13 +17,16 @@ import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import className from 'classnames/bind';
 import { useEffect, useState } from 'react';
+import 'tippy.js/dist/tippy.css';
 import images from '~/asset/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+
 import { Wrapper as PoperWrapper } from '~/components/Poper';
 import Menu from '~/components/Poper/Menu';
+import { UploadIcon } from '~/components/Icons';
 import styles from './Header.module.scss';
-import 'tippy.js/dist/tippy.css';
+import Image from '~/components/Image';
 
 const cx = className.bind(styles);
 
@@ -144,7 +146,7 @@ function Header() {
             <>
               <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
                 </button>
               </Tippy>
             </>
@@ -157,7 +159,7 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx('user-avatar')}
                 src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80"
                 alt="Pham Ngoc Hai"
